@@ -25,6 +25,7 @@
     "setup": "npm install && npm run db:generate && npm run db:deploy"
   },
   "devDependencies": {
+    "@types/node": "^26.6.3",
     "concurrently": "^9.0.1"
   },
   "allowScripts": {
