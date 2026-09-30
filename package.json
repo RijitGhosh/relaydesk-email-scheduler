@@ -1,0 +1,40 @@
+{
+  "name": "relaydesk",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,worker,web -c blue,magenta,green \"npm:dev:api\" \"npm:dev:worker\" \"npm:dev:web\"",
+    "dev:api": "npm run dev -w @relaydesk/api",
+    "dev:worker": "npm run dev:worker -w @relaydesk/api",
+    "dev:web": "npm run dev -w @relaydesk/web",
+    "build": "npm run build -w @relaydesk/api && npm run build -w @relaydesk/web",
+    "start": "concurrently -n api,worker,web \"npm run start -w @relaydesk/api\" \"npm run start:worker -w @relaydesk/api\" \"npm run start -w @relaydesk/web\"",
+    "db:generate": "npm run db:generate -w @relaydesk/api",
+    "db:migrate": "npm run db:migrate -w @relaydesk/api",
+    "db:deploy": "npm run db:deploy -w @relaydesk/api",
+    "db:seed": "npm run db:seed -w @relaydesk/api",
+    "es:reindex": "npm run es:reindex -w @relaydesk/api",
+    "lint": "npm run lint -w @relaydesk/api && npm run lint -w @relaydesk/web",
+    "typecheck": "npm run typecheck -w @relaydesk/api && npm run typecheck -w @relaydesk/web",
+    "test": "npm run test -w @relaydesk/api",
+    "infra:up": "docker compose -f infra/docker-compose.yml up -d --wait",
+    "infra:down": "docker compose -f infra/docker-compose.yml down",
+    "setup": "npm install && npm run db:generate && npm run db:deploy"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  },
+  "allowScripts": {
+    "@prisma/client@6.19.3": true,
+    "@prisma/engines@6.19.3": true,
+    "prisma@6.19.3": true,
+    "esbuild@0.28.2": true,
+    "esbuild@0.21.5": true,
+    "msgpackr-extract@3.0.4": true,
+    "unrs-resolver@1.12.2": true,
+    "fsevents@2.3.3": true
+  }
+}

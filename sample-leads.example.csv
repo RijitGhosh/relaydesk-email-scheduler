@@ -1,0 +1,8 @@
+name,email,company
+Ava Patel,ava.patel@example.com,Northwind
+Ben Carter,ben.carter@example.com,Contoso
+"Chen, Li",li.chen@example.com,Fabrikam
+Dana Ruiz,dana.ruiz@example.com,Initech
+not-an-email,broken@@example,Bad Row
+Ava Patel,AVA.PATEL@example.com,Northwind
+Eli Novak,eli.novak@example.com,Globex
