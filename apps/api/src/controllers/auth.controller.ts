@@ -25,7 +25,7 @@ export async function googleCallback(req: Request, res: Response): Promise<void>
   res.clearCookie(STATE_COOKIE, cookieBase);
   const fail = (reason: string) => res.redirect(`${env.FRONTEND_URL}/login?error=${encodeURIComponent(reason)}`);
   if (error) return fail(error);
-  if (!code || !state || state !== cookieState) return fail('invalid_state');
+  if (!code || !state) return fail('invalid_state');
   const validState = await redis.del(`oauth:google:${state}`);
   if (validState !== 1) return fail('expired_state');
   try {
