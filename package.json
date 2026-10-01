@@ -22,11 +22,12 @@
     "test": "npm run test -w @relaydesk/api",
     "infra:up": "docker compose -f infra/docker-compose.yml up -d --wait",
     "infra:down": "docker compose -f infra/docker-compose.yml down",
-    "setup": "npm install && npm run db:generate && npm run db:deploy"
+    "setup": "npm install && npm run db:generate && npm run db:deploy",
+    "start:production": "concurrently --kill-others-on-fail \"npm run start -w @relaydesk/api\" \"npm run start:worker -w @relaydesk/api\""
   },
   "devDependencies": {
     "@types/node": "^26.6.3",
-    "concurrently": "^9.0.1"
+    "concurrently": "^9.2.4"
   },
   "allowScripts": {
     "@prisma/client@6.19.3": true,
