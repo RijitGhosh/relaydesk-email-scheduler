@@ -5,7 +5,6 @@ import { prisma } from './lib/prisma';
 import { redis } from './lib/redis';
 import { es } from './elasticsearch/client';
 import { closeQueues } from './queues/queues';
-import './worker';
 
 async function main(): Promise<void> {
   await prisma.$connect();
