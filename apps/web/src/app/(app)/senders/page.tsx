@@ -37,7 +37,13 @@ export default function SendersPage() {
   const limitValid = Number.isInteger(Number(limit)) && Number(limit) >= 1;
   return (
     <>
-      <PageHeader title="Senders" description="Each sender has its own Ethereal SMTP account and its own hourly limit." />
+      <PageHeader title="Senders" description="Connect Gmail to send real emails, or add an Ethereal test sender." />
+      <div className="mb-6">
+        <a href="/api/auth/gmail/connect" className="inline-flex items-center rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white hover:opacity-90">
+          Connect Gmail
+        </a>
+        <p className="mt-2 text-xs text-muted">Authorize your Google account to send real emails. Ethereal remains available for testing.</p>
+      </div>
       <form
         className="card mb-6 flex flex-wrap items-end gap-4 p-5"
         onSubmit={(e) => {
@@ -76,7 +82,7 @@ export default function SendersPage() {
               <thead className="bg-surface2/60 text-left text-xs font-semibold uppercase tracking-wide text-muted">
                 <tr>
                   <th className="px-4 py-3">Sender</th>
-                  <th className="px-4 py-3">SMTP</th>
+                  <th className="px-4 py-3">Provider</th>
                   <th className="px-4 py-3">Hourly limit</th>
                   <th className="px-4 py-3">Status</th>
                   <th className="px-4 py-3 text-right">Enabled</th>
@@ -89,7 +95,7 @@ export default function SendersPage() {
                       <p className="font-medium">{s.displayName}</p>
                       <p className="text-xs text-muted">{s.email}</p>
                     </td>
-                    <td className="px-4 py-3 text-muted">{s.smtpHost}</td>
+                    <td className="px-4 py-3 text-muted">{s.provider === "gmail" ? "Gmail API" : `Ethereal SMTP (${s.smtpHost})`}</td>
                     <td className="px-4 py-3">
                       <input
                         aria-label={`Hourly limit for ${s.email}`}

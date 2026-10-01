@@ -24,6 +24,9 @@ model User {
   name       String
   email      String   @unique
   avatarUrl  String?
+  gmailEmail          String?
+  gmailRefreshTokenEnc String?
+  gmailConnectedAt    DateTime?
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
@@ -48,6 +51,7 @@ model Session {
 
 model Sender {
   id             String   @id @default(uuid()) @db.Uuid
+  provider String @default("ethereal")
   userId         String   @db.Uuid
   email          String
   displayName    String

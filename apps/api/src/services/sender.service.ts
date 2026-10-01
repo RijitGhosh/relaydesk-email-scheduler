@@ -7,6 +7,7 @@ import { prisma } from '../lib/prisma';
 
 export interface SenderDto {
   id: string;
+  provider: string;
   email: string;
   displayName: string;
   active: boolean;
@@ -17,6 +18,7 @@ export interface SenderDto {
 
 export const toSenderDto = (s: Sender): SenderDto => ({
   id: s.id,
+  provider: s.provider,
   email: s.email,
   displayName: s.displayName,
   active: s.active,

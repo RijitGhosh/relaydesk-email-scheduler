@@ -19,6 +19,7 @@ const schema = z.object({
   GOOGLE_CLIENT_ID: z.string().default(''),
   GOOGLE_CLIENT_SECRET: z.string().default(''),
   GOOGLE_CALLBACK_URL: z.string().default('http://localhost:4000/api/auth/google/callback'),
+  GOOGLE_GMAIL_CALLBACK_URL: z.string().default('http://localhost:4000/api/auth/gmail/callback'),
 
   SLACK_CLIENT_ID: z.string().default(''),
   SLACK_CLIENT_SECRET: z.string().default(''),
@@ -28,6 +29,9 @@ const schema = z.object({
   ETHEREAL_PORT: intFromString(587),
   ETHEREAL_USER: z.string().default(''),
   ETHEREAL_PASSWORD: z.string().default(''),
+  
+  RESEND_API_KEY: z.string().default(''),
+  RESEND_FROM_EMAIL: z.string().default('onboarding@resend.dev'),
 
   WORKER_CONCURRENCY: intFromString(5).pipe(z.number().min(1).max(200)),
   MIN_SEND_DELAY_MS: intFromString(2000).pipe(z.number().min(0)),

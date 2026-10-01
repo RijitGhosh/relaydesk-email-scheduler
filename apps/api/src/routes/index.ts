@@ -12,6 +12,8 @@ api.get('/health', asyncHandler(health));
 
 api.get('/auth/google', asyncHandler(auth.googleStart));
 api.get('/auth/google/callback', asyncHandler(auth.googleCallback));
+api.get('/auth/gmail/connect', requireAuth, asyncHandler(auth.gmailConnectStart));
+api.get('/auth/gmail/callback', asyncHandler(auth.gmailConnectCallback));
 api.post('/auth/register', asyncHandler(auth.register));
 api.post('/auth/login', asyncHandler(auth.login));
 api.get('/auth/me', requireAuth, auth.me);

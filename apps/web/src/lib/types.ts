@@ -9,6 +9,7 @@ export interface User {
 
 export interface Sender {
   id: string;
+  provider: string;
   email: string;
   displayName: string;
   active: boolean;
