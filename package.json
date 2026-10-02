@@ -23,7 +23,7 @@
     "infra:up": "docker compose -f infra/docker-compose.yml up -d --wait",
     "infra:down": "docker compose -f infra/docker-compose.yml down",
     "setup": "npm install && npm run db:generate && npm run db:deploy",
-    "start:production": "concurrently --kill-others-on-fail \"npm run start -w @relaydesk/api\" \"npm run start:worker -w @relaydesk/api\""
+    "start:production": "npm run db:deploy -w @relaydesk/api && concurrently --kill-others-on-fail \"npm run start -w @relaydesk/api\" \"npm run start:worker -w @relaydesk/api\""
   },
   "devDependencies": {
     "@types/node": "^26.6.3",
