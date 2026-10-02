@@ -26,7 +26,7 @@ const schema = z.object({
   SLACK_REDIRECT_URI: z.string().default('http://localhost:4000/api/slack/callback'),
 
   ETHEREAL_HOST: z.string().default(''),
-  ETHEREAL_PORT: intFromString(587),
+  ETHEREAL_PORT: intFromString(465),
   ETHEREAL_USER: z.string().default(''),
   ETHEREAL_PASSWORD: z.string().default(''),
   
